@@ -20,3 +20,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.form-card{
+  width: 40rem;
+  margin: 3em auto;
+  padding: 1em;
+}
+
+.text-start{
+  text-align: start;
+}

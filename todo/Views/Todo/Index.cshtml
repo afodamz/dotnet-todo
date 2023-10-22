@@ -1,8 +1,52 @@
+@* @model todo.Models.Todo *@
+@model List<todo.Models.Todo>
+@* @{
+// Here you can declare and use a different model for the second section
+todo.Models.Todo todoObject = new todo.Models.Todo();
+} *@
+
 @{
     ViewData["Title"] = "Todo";
 }
 
+
 <div class="text-center">
     <h1 class="display-4">My todo page</h1>
-</div>
+    <div class="container">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <div class="card form-card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">IsCompleted</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var todo in Model)
+                    {
+                        <tr>
+                            <th scope="row">@todo.Id</th>
+                            <td>@todo.Title</td>
+                            <td>@todo.Description</td>
+                            <td>@todo.IsCompleted</td>
+                            <td class="d-flex flex-row justify-content-between">
+                                <a asp-action="Edit" asp-route-id="@todo.Id" class="btn btn-secondary secondary">Edit</a> 
+                                <a asp-action="Details" asp-route-id="@todo.Id" class="btn btn-success secondary">View</a> 
+                                <form asp-action="Delete" asp-route-id="@todo.Id" method="post">
+                                    <input type="submit" value="Delete" class="btn btn-danger secondary" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
+    </div>
+</div>

@@ -1,0 +1,41 @@
+@model todo.Models.Todo
+
+@{
+    ViewData["Title"] = "Todo Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Joke</h4>
+    <hr />
+    <dl class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">IsCompleted</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@Model.Title</td>
+                    <td>@Model.Description</td>
+                    <td>Otto</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
